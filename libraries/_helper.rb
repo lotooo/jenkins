@@ -67,6 +67,7 @@ EOH
         h[:key]      = private_key_path if private_key_given?
         h[:proxy]    = proxy if proxy_given?
         h[:endpoint] = endpoint
+        h[:auth]     = auth
         h[:timeout]  = timeout if timeout_given?
         h[:username] = username unless username.nil?
         h[:password] = password unless password.nil?
@@ -379,6 +380,16 @@ EOH
     #
     def cli_user
       node['jenkins']['executor']['cli_user']
+    end
+
+    #
+    # -auth options to pass to cli
+    # http protocol needs it
+    #
+    # @return [String]
+    #
+    def auth
+      node['jenkins']['executor']['auth']
     end
 
     #
